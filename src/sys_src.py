@@ -1,5 +1,7 @@
 key_store_db=1869	#passkey store here for temp.until testing is complete
 
+login_logDB=[]          #isolated dbase for storing login.logs
+
 def security(key_store_db,passkey):	#main security for accessing the system
 	try:
 		if passkey == key_store_db:
@@ -10,7 +12,6 @@ def security(key_store_db,passkey):	#main security for accessing the system
 		return f'{e}'
 passkey=int(input('Enter key to continue\n>> ')
 security()
-login_logDB=[]          #isolated dbase for storing login.logs
 
 def login_attempts(key_store_db,passkey):
 	#try return ip by validating passkey
