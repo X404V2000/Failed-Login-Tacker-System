@@ -1,38 +1,43 @@
 sys_logs=[]		#sys.dbase for storing logs
 
+iso_dbase=[]		#sys_isolation.dbase for storing suspicious ip addresses with unauthorised/failed logs
+
 def auth_(ip_key,passwd_key,ip_password_dict):
 	if ip_key in ip_password_dict:
 		print(f'IP {ip_key} found')
 		for i in range(5):
-			if passwd_key in ip_password_dict[ip_key]:
+			if passwd_key in ip_password_dict[ip_key]:	#if password first try attempt valid grant access
 				grant_arg_1="SUCCESS"
 				arg_1_to_sys_logs_dbase=f'{ip_key} | {passwd_key} | {grant_arg_1}'
 				sys_logs.insert(0,arg_1_to_sys_logs_dbase)	#inserting log.attempts in sys_logs.dbase
 				print(sys_logs)		#temp to test if data in dbase
-
 				print('Access granted')
 				return True
 			else:
 				if i < 4:
-					print(f'Access denied. {4-i} attempts remaining')
-					passwd_key1=input('Enter Password\n>> ')
-					for passwd_key1 in passwd_key1:
-						while passwd_key1 == ip_password_dict[ip_key]:
-							grant_arg_2="SUCCESS"
-							arg_2_to_sys_logs_dbase=f'{ip_key} | {passwd_key1} | {grant_arg_2}'
-							sys_logs.insert(0,arg_2_to_sys_logs_dbase)	#inserting log.attempts in sys_logs.dbase
-							print(sys_logs)		#temp to test if data in dbase
-							break
+					print(f'Access denied. {4-i} attempts remaining')	#show attempts left for user.login_attempts
+					passwd_key1=input('Enter Password\n>> ')	#return passwd_key1.arg if attempt is < 4
+					while passwd_key1 in ip_password_dict[ip_key]:
+						grant_arg_2="SUCCESS"
+						arg_2_to_sys_logs_dbase=f'{ip_key} | {passwd_key1} | {grant_arg_2}'
+						sys_logs.insert(0,arg_2_to_sys_logs_dbase)	#inserting log.attempts in sys_logs.dbase
+						print(sys_logs)		#temp to test if data in dbase
+						return True
 				else:
 					print('Access denied. Maximum attempts exceeded.')
 					for i in range(5):	#this area contains a bug needs to be fixed
-						while passwd_key1 != ip_password_dict[ip_key]:
+						while passwd_key1 not in ip_password_dict[ip_key]:
 							deny_arg="FAILED"
 							arg_3_to_sys_logs_dbase=f'{ip_key} | {passwd_key1} | {deny_arg}'
 							sys_logs.insert(0,arg_3_to_sys_logs_dbase)	#inserting log.attempts in sys_logs.dbase
 							print(sys_logs)		#temp to test if data in dbase
-							break
-					return False	
+							if i > 4:
+								for i in range(5):	#sys.alert if ip login attempt == 5
+									fail_attempt=f'{ip_key} login attempt failed'
+									alert=f'who is {ip_key} ...'
+									print(f'{fail_attempt} ... {alert}')
+							return False
+							
 	
 	else:
 		print(f'IP {ip_key} not in system')
