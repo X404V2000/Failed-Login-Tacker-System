@@ -219,11 +219,3 @@ Your project is complete when:
 5. How will you display logs in a readable format?
 
 ---
-
-**Get started by planning your data structures first, then build each feature one at a time. Test as you go!**
-
-*Deadline: 5 days*  
-*Priority: High*  
-*Type: Individual Project*
-
-Good luck, analyst! Let me know when you have questions about the requirements. 🎯
