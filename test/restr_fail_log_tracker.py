@@ -197,7 +197,7 @@ def show_menu():
 	RED = '\033[91m'
 	GREEN = '\033[92m'
 	RESET = '\033[0m'
-	print("="*100)
+	print(f"{RED}={RESET}"*100)
 	print(" "*4,f"{GREEN}0110{RESET}"," "*5,f"{GREEN}0110 0110{RESET}", " "*7,f"{GREEN}0110 0110{RESET}", " "*11,f"{GREEN}0110 0110{RESET}", " "*5,f"{GREEN}0110 0110{RESET}", " "*2,f"{GREEN}0110 0110{RESET}")
 	print(" "*3,f"{GREEN}0110{RESET}", " "*4,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}", " "*7,f"{GREEN}0110{RESET}", " "*2,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}", " "*6,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}")
 	print(" "*2,f"{GREEN}0110{RESET}", " "*4,f"{GREEN}0110{RESET}", " "*5,f"{GREEN}0110{RESET}", " "*1,f"{GREEN}0110{RESET}", " "*19,f"{GREEN}0110{RESET}", " "*8,f"{GREEN}0110 0110{RESET}", " "*1,f"{GREEN}0110{RESET}")
@@ -205,7 +205,7 @@ def show_menu():
 	print("",f"{GREEN}0110 0110{RESET}", " "*1,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}", " ",f"{GREEN}0110{RESET}", "",f"{GREEN}0110{RESET}", " "*2,f"{GREEN}0110{RESET}", " "*1,f"{GREEN}0110{RESET}", " "*7,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110{RESET}")
 	print(f"{GREEN}0110 0110{RESET}", " "*4,f"{GREEN}0110 0110{RESET}", " "*7,f"{GREEN}0110 0110{RESET}", " "*1,f"{GREEN}0110{RESET}", " "*3,f"{GREEN}0110 0110{RESET}", " "*2,f"{GREEN}0110 0110{RESET}", " "*5,f"{GREEN}0110 0110{RESET}")
 	print(f"{RED}LOGIN TRACKER SYSTEM{RESET}")
-	print("="*100)
+	print(f"{RED}={RESET}"*100)
 	print(f"{RED}[1]{RESET}{GREEN}. Attempt Login{RESET}")
 	print(f"{RED}[2]{RESET}{GREEN}. View Logs{RESET}")
 	print(f"{RED}[3]{RESET}{GREEN}. View Blocked IPs{RESET}")
@@ -220,7 +220,7 @@ def show_menu():
 	print(f"{RED}[12]{RESET}{GREEN}. Most Offending IPs{RESET}")
 	print(f"{RED}[13]{RESET}{GREEN}. Clear All Data{RESET}")
 	print(f"{RED}[14]{RESET}{GREEN}. Exit{RESET}")
-	print("="*50)
+	print(f"{RED}={RESET}"*100)
 
 def view_logs():
 	#Display login logs
@@ -308,7 +308,7 @@ def clear_all():
 # MAIN PROGRAM
 def main():
 	#Main program loop
-	print(f"\n{RED}Welcome!\n... log_tracker.sys running{RESET}")
+	print(f"\n{RED}... log_tracker.sys running{RESET}")
 
 	while True:
 		show_menu()
