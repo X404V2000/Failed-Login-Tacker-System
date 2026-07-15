@@ -1,0 +1,40 @@
+┌─────────────────────────────────────────────────────────────────┐
+│                         USER INPUT                              │
+│                  (IP Address + Password)                        │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    AUTHENTICATION FLOW                          │
+│                                                                 │
+│  1. Check if IP is BLOCKED                                      │
+│     ┌─────────────┐                                             │
+│     │ is_blocked  │─── YES ──→ [ACCESS DENIED] + Log            │
+│     └─────────────┘                                             │
+│           │ NO                                                  │
+│           ▼                                                     │
+│  2. Check if IP EXISTS                                          │
+│     ┌─────────────┐                                             │
+│     │ IP in dict  │─── NO ──→ [UNKNOWN IP] + Add to iso_dbase   │
+│     └─────────────┘                                             │
+│           │ YES                                                 │
+│           ▼                                                     │
+│  3. Check PASSWORD (Max 5 attempts)                             │
+│     ┌─────────────┐                                             │
+│     │  Compare    │─── YES ──→ [ACCESS GRANTED] + Log + Reset   │
+│     │  Password   │                                             │
+│     └─────────────┘                                             │
+│           │ NO                                                  │
+│           ▼                                                     │
+│  4. Count FAILED ATTEMPTS                                       │
+│     ┌─────────────┐                                             │
+│     │ increment   │─── <5 ──→ Try again                         │
+│     │ fail_count  │                                             │
+│     └─────────────┘                                             │
+│           │ ≥5                                                  │
+│           ▼                                                     │
+│  5. BRUTE FORCE DETECTED                                        │
+│     ┌─────────────┐                                             │
+│     │  block_ip   │───→ [IP BLOCKED] + Alert                    │
+│     └─────────────┘                                             │
+└─────────────────────────────────────────────────────────────────┘

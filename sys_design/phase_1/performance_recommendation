@@ -1,0 +1,18 @@
+┌─────────────────────────────────────────────────────────────────────┐
+│                      PERFORMANCE METRICS                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  Time Complexity:                                                   │
+│  ├─ authenticate()       → O(n) - n = attempts (max 5)              │
+│  ├─ is_blocked()         → O(1) - list membership check             │
+│  ├─ get_fail_count()     → O(n) - n = failed_counts list            │
+│  ├─ log_attempt()        → O(1) - list insertion at index 0         │
+│  └─ view_logs()          → O(n) - n = sys_logs length               │
+│                                                                     │
+│  Space Complexity:                                                  │
+│  ├─ sys_logs      → O(n) - n = number of attempts                   │
+│  ├─ blocked_ip    → O(n) - n = number of blocked IPs                │
+│  └─ failed_counts → O(n) - n = number of unique failed IPs          │
+│                                                                     │
+│  Memory Usage: ~1-5 MB for typical usage                            │
+└─────────────────────────────────────────────────────────────────────┘

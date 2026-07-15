@@ -1,0 +1,28 @@
+failed_login_tracker
+│
+├── main.py                    # Main application
+├── auth.py                    # Authentication logic
+├── database.py               # Data management
+├── utils.py                  # Helper functions
+├── config.py                 # Configuration
+│
+├── data/                     # Data storage
+│   ├── sys_logs.json
+│   ├── blocked_ip.json
+│   ├── failed_counts.json
+│   └── iso_dbase.json
+│
+├── tests/                    # Test files
+│   ├── test_auth.py
+│   ├── test_database.py
+│   └── test_utils.py
+│
+├── logs/                     # Application logs
+│   └── app.log
+│
+├── docs/                     # Documentation
+│   ├── README.md
+│   ├── ARCHITECTURE.md
+│   └── API.md
+│
+└── requirements.txt          # Dependencies
